@@ -1,0 +1,24 @@
+{
+  "name": "tera-shop-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node ./index.js",
+    "start": "node ./index.js",
+    "patch": "changelog -p",
+    "minor": "changelog -m",
+    "major": "changelog -M",
+    "eslint": "eslint .",
+    "test:unit": "mocha .",
+    "test:coverage": "istanbul cover npm run test:unit"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mysql": "^2.18.0"
+  }
+}
