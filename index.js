@@ -4,7 +4,7 @@ const PORT = process.env.PORT || 1337
 const bodyParser = require('body-parser')
 const cors = require('cors')
 
-//const { authMiddleware } = require('./src/private/v1/middlewares/controllerMiddleware')
+// TODO const { authMiddleware } = require('./src/private/v1/middlewares/controllerMiddleware')
 const routesPrivateV1 = require('./src/private/v1/routes')
 
 app.use(bodyParser.json(), cors())
@@ -20,7 +20,7 @@ app.use((err, req, res, next) => {
   res.send('500: Internal server error')
 })
 // private API v1 routes
-//app.use('/api/private/', authMiddleware)
+// app.use('/api/private/', authMiddleware)
 app.use('/api/private/v1', routesPrivateV1)
 
 app.listen(PORT, () => {

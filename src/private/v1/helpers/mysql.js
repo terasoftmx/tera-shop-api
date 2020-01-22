@@ -9,19 +9,18 @@ const connection = mysql.createConnection({
 
 exports.getProducts = () => {
   return new Promise((resolve, reject) => {
-    connection.query('SELECT * FROM Cat01', _errorCallBack)
+    connection.query('SELECT * FROM Cat01', (error, response) => {
+      if (error) {
+        console.error(error)
+        reject({status : 'error', error : error.message})
+      } else {
+        if(response !== null && response.length > 0){
+          resolve(response + '2')
+        }
+        else{
+          reject({status : false, error : response})
+        }
+      }
+    })
   })
-}
-
-const _errorCallBack = (error, response) => {
-  if (error) {
-    reject({status : "error", error : error.message})
-  } else {
-    if(resp !== null && resp.length > 0){
-      resolve(resp);
-    }
-    else{
-      reject({status : false, error : resp});
-    }
-  }
 }
