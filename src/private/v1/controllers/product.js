@@ -3,10 +3,8 @@ const { Product } = require('../../../utils/index')
 
 exports.getProducts = (req, res) => {
   mysql.getProducts().then((response) => {
-    console.log(typeof response)
-    console.dir(response)
     const products = []
-    response.foreach(rowRaw => {
+    response.forEach(rowRaw => {
       const product = new Product(
         rowRaw.ID_CART,
         rowRaw.CART,
@@ -37,6 +35,10 @@ exports.getProducts = (req, res) => {
 exports.getProduct = (req, res) => {
   const productId = req.params.productId
   mysql.getProductById(productId).then((response) => {
+    if (rowRaw.length === 0) {
+      res.status(404).json({data: 'product not found'})
+    }
+
     const rowRaw = response[0]
     const product = new Product(
       rowRaw.ID_CART,
