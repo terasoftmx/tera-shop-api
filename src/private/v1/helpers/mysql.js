@@ -1,14 +1,17 @@
 const mysql = require('mysql')
 
-const connection = mysql.createConnection({
-  host: process.env.MYSQL_HOST,
-  user: process.env.MYSQL_USER,
-  password: process.env.MYSQL_PASSWORD,
-  database: process.env.MYSQL_DATABASE,
-})
+const getClient = () => {
+  return mysql.createConnection({
+    host: process.env.MYSQL_HOST,
+    user: process.env.MYSQL_USER,
+    password: process.env.MYSQL_PASSWORD,
+    database: process.env.MYSQL_DATABASE,
+  })
+}
 
 exports.getProducts = () => {
   return new Promise((resolve, reject) => {
+    const connection = getClient()
     connection.query('SELECT * FROM Cat01', (error, response) => {
       connection.end()
       if (error) {
@@ -28,6 +31,7 @@ exports.getProducts = () => {
 
 exports.getProductById = productId => {
   return new Promise((resolve, reject) => {
+    const connection = getClient()
     connection.query(`SELECT * FROM Cat01 where ID_CART = ${productId}`, (error, response) => {
       connection.end()
       if (error) {
