@@ -1,7 +1,7 @@
 exports.Product = function (ID_CART, CART, NART, CATEGORY, BRAND, MODEL, COLOR, SIZE, PRICEA, PRICEB, PRICEC, PRICED, PRICEE, PRICEF, IMAGE_EXT, PROV, FAB, PROMO, PMES) {
   this.id = ID_CART
-  this.route = CART
-  this.controller = NART
+  this.cart = CART
+  this.description = NART
   this.category = CATEGORY
   this.brand = BRAND
   this.model = MODEL
